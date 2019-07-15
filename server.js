@@ -63,7 +63,6 @@ function serverHandler(request, response) {
     });
     response.write('RTCMultiConnection Socket.io Server.\n\n' + 'https://github.com/muaz-khan/RTCMultiConnection-Server\n\n' + 'npm install RTCMultiConnection-Server');
     logger.debug('Server Response 200');
-    logger.info('Server Response 200');
     response.end();
 }
 
