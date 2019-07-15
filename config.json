@@ -5,7 +5,6 @@
   "socketMessageEvent": "RTCMultiConnection-Message",
   "socketCustomEvent": "RTCMultiConnection-Custom-Message",
   "port": "9009",
-  "enableLogs": "false",
   "autoRebootServerOnFailure": "false",
   "isUseHTTPs": "true",
   "sslKey": "./fake-keys/privatekey.pem",
@@ -13,5 +12,6 @@
   "sslCabundle": "",
   "enableAdmin": "false",
   "adminUserName": "username",
-  "adminPassword": "password"
+  "adminPassword": "password",
+  "log4jsFileName": "/Users/libin/Documents/IM/logs/RTCServerLog"
 }

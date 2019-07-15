@@ -22,7 +22,8 @@ function getValues(param) {
         sslCabundle: null,
         enableAdmin: false,
         adminUserName: null,
-        adminPassword: null
+        adminPassword: null,
+        log4jsFileName: null
     };
 
 
@@ -99,6 +100,10 @@ function getValues(param) {
 
     if ((config.adminPassword || '').toString().length) {
         result.adminPassword = (config.adminPassword || '').toString();
+    }
+
+    if ((config.log4jsFileName || '').toString().length) {
+        result.log4jsFileName = (config.log4jsFileName || '').toString();
     }
 
     return result;

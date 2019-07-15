@@ -1,9 +1,9 @@
-// http://127.0.0.1:9009
-// http://localhost:9009
+'use strict'
 
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
+var log4js = require('log4js');
 var httpServer = require('http');
 
 const ioServer = require('socket.io');
@@ -33,6 +33,25 @@ if(isUseHTTPs === false) {
     isUseHTTPs = config.isUseHTTPs;
 }
 
+log4js.configure({
+    appenders: {
+        ruleConsole: {type: 'console'},
+        ruleFile: {
+            type: 'dateFile',
+            filename: config.log4jsFileName,
+            pattern: 'yyyy-MM-dd.log',
+            maxLogSize: 10 * 1000 * 1000,
+            numBackups: 10,
+            alwaysIncludePattern: true
+        }
+    },
+    categories: {
+        default: {appenders: ['ruleConsole', 'ruleFile'], level: 'ALL'}
+    }
+});
+
+var logger = log4js.getLogger();
+
 function serverHandler(request, response) {
     // to make sure we always get valid info from json file
     // even if external codes are overriding it
@@ -43,6 +62,8 @@ function serverHandler(request, response) {
         'Content-Type': 'text/plain'
     });
     response.write('RTCMultiConnection Socket.io Server.\n\n' + 'https://github.com/muaz-khan/RTCMultiConnection-Server\n\n' + 'npm install RTCMultiConnection-Server');
+    logger.debug('Server Response 200');
+    logger.info('Server Response 200');
     response.end();
 }
 
